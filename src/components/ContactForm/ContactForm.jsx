@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import css from './ContactForm.module.css'
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
+import { nanoid } from "@reduxjs/toolkit";
 
 
 const contactSchema = Yup.object().shape({
@@ -24,8 +25,9 @@ export const ContactForm = () => {
 
   const handleSubmit = (values, actions) => {
     const newContact = {
+      id: nanoid(),
       name: values.name,
-      phone: values.number
+      number: values.number
     }
 
     dispatch(addContact(newContact));
