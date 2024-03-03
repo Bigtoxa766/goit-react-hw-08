@@ -1,19 +1,17 @@
-import { useDispatch } from "react-redux";
+import {  useSelector } from "react-redux";
 import { UserMenu } from "../components/UserMenu/UserMenu";
-import { useAuth } from "../redux/hooks/useAuth";
-import { logout } from "../redux/auth/operations";
+import { selectUser } from "../redux/auth/selectord";
+import { ContactForm } from "../components/ContactForm/ContactForm";
 
 export default function ContactsPage() {
-  const dispatch = useDispatch();
-  const { user } = useAuth();
-  
+
+console.log( useSelector(selectUser))
   return (
     <div>
-      <h1>Welcone {user.name}</h1>
-      <button type="button" onClick={() => {
-        dispatch(logout())
-      }}>Log Out</button>
-    </div>)
+      <UserMenu />
+      <ContactForm/>
+    </div>
+    )
     
   
 }

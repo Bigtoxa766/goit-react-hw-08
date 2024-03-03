@@ -4,7 +4,8 @@ import * as Yup from "yup";
 import css from './ContactForm.module.css'
 import { useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
-import { addContact } from "../../redux/operations";
+import { addContact } from "../../redux/contacts/operations";
+
 
 const contactSchema = Yup.object().shape({
   name: Yup.string()
@@ -28,7 +29,7 @@ export const ContactForm = () => {
       name: values.name,
       phone: values.number
     }
-console.log(values)
+
     dispatch(addContact(newContact));
     actions.resetForm();
   };
@@ -43,10 +44,12 @@ console.log(values)
       <Form className={css.form_container} >
         <label className={css.form_lable} htmlFor={nameId}>Name</label>
         <Field type="text" name="name" id={nameId} />
-        <ErrorMessage className={css.error_message} name="name" component="span"/>
+        <ErrorMessage className={css.error_message} name="name" component="span" />
+        
         <label className={css.form_lable} htmlFor={numberId}>Number</label>
         <Field type="text" name="number" id={numberId} />
-        <ErrorMessage className={css.error_message} name="number" component="span"/>
+        <ErrorMessage className={css.error_message} name="number" component="span" />
+        
         <button className={css.form_btn} type="submit">Add contact</button>
       </Form>
     </Formik>
