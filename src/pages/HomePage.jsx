@@ -1,11 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { HomePageNavigation } from "../components/UomePageNavigation/HomePageNavigation";
 
 
 export default function HomePage() {
   return (
     <div>
-      <NavLink to='/registration'>Sign In</NavLink>
-      <NavLink to='/login'>Log In</NavLink>
+      <HomePageNavigation />
+      
     </div>
   )
 }

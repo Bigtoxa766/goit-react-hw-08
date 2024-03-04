@@ -16,12 +16,14 @@ export default function ContactsPage() {
 
   return (
     <div>
-      <UserMenu />
-      <ContactForm />
-      <SearchBar/>
-      <ContactList/>
+      <div>
+        <UserMenu />
+        <ContactForm />
+        <SearchBar />
+      </div>
+      <ContactList />
     </div>
-    )
+  )
     
   
 }

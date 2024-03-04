@@ -5,6 +5,7 @@ import { useId } from "react";
 import css from './RegistrationForm.module.css'
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
+import { NavLink } from "react-router-dom";
 
 
 const FeedbackSchema = Yup.object().shape({
@@ -24,7 +25,7 @@ export const RegistrationForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    console.log(values)
+  
     dispatch(register({
       name: values.username,
       email: values.email,
@@ -40,27 +41,32 @@ export const RegistrationForm = () => {
     }}
       validationSchema={FeedbackSchema}
       onSubmit={handleSubmit}>
-      <Form className={css.form_container}>
+      
+      <Form className={css.form_container}
+      autoComplete="on">
        
         <div className={css.field_wrap}>
           <label htmlFor={nameFieldId}>Username</label>
           <Field id={nameFieldId} type="text" name="username" />
-          <ErrorMessage name="username" as="span" />
+          <ErrorMessage className={css.error_message} name="username" component="span" />
         </div>
       
         <div className={css.field_wrap}>
           <label htmlFor={emailFieldId}>Email</label>
           <Field id={emailFieldId} type="text" name="email" />
-          <ErrorMessage name="email" as="span" />
+          <ErrorMessage className={css.error_message} name="email" component="span" />
         </div>
         
         <div className={css.field_wrap}>
           <label htmlFor={passwordFieldId}>Password</label>
           <Field id={passwordFieldId} type="text" name="password" />
-          <ErrorMessage name="password" as="span" />
+          <ErrorMessage className={css.error_message} name="password" component="span" />
         </div>
 
-        <button type="submit">Registration</button>
+        <div className={css.btn_wrapper}>
+          <button type="submit">Registration</button>
+        <NavLink className={css.navLink_goBack} to='/'>Go back</NavLink>
+        </div>
       </Form>
     </Formik>
   )

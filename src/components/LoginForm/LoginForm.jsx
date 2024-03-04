@@ -1,5 +1,7 @@
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/auth/operations";
+import css from './LoginForm.module.css'
+import { NavLink } from "react-router-dom";
 
 
 export const LoginForm = () => {
@@ -16,16 +18,26 @@ export const LoginForm = () => {
 
   }
   return (
-    <form  onSubmit={handleSubmit} autoComplete="off">
-      <label >
+    <form
+      className={css.loginForm_container}
+      onSubmit={handleSubmit}
+      autoComplete="on">
+      <div >
+        <label className={css.loginForm_label} >
         Email
         <input type="email" name="email" />
       </label>
-      <label >
+      <label className={css.loginForm_label} >
         Password
-        <input type="password" name="password" />
+        <input
+          type="password"
+          name="password" />
       </label>
+      </div>
       <button type="submit">Log In</button>
+      <NavLink
+        className={css.navLink_goBack}
+        to='/'>Go back</NavLink>
     </form>
   )
 }

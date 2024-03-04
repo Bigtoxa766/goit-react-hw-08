@@ -4,4 +4,11 @@
 
   margin-top: 20px;
   text-align: left;
+
+  
+}
+.search_barInput{
+padding: 10px;
+
+max-width: 400px;
 }

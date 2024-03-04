@@ -21,8 +21,7 @@ export const ContactForm = () => {
   const nameId = useId();
   const numberId = useId();
   const dispatch = useDispatch();
-
-
+  
   const handleSubmit = (values, actions) => {
     const newContact = {
       id: nanoid(),
