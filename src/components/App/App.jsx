@@ -26,20 +26,30 @@ function App() {
 
   return isRefreshing ? (
     <b>Refreshing user...</b>
-  ): (
+  ) : (
     <div>
       <Routes>
-          <Route path='/' element={<RestrictedRoute redirectTo='/contacts' component={<HomePage />}/>} />
+        <Route path='/' element={<RestrictedRoute
+            redirectTo='/contacts'
+            component={<HomePage />} />} />
           
-          <Route path='/registration' element={<RestrictedRoute
+        <Route
+          path='/registration'
+          element={<RestrictedRoute
             redirectTo='/contacts'
             component={<RegsterPage />} />} />
           
-          <Route path='/login' element={<RestrictedRoute
-            redirectTo='/contacts' component={<LoginPage />} />} />
+        <Route
+          path='/login'
+          element={<RestrictedRoute
+            redirectTo='/contacts'
+            component={<LoginPage />} />} />
           
-          <Route path='/contacts' element={<PrivateRoute
-            redirectTo='/login' component={<ContactsPage/>} />} />
+        <Route
+          path='/contacts'
+          element={<PrivateRoute
+            redirectTo='/login'
+            component={<ContactsPage />} />} />
       </Routes>
     </div>
 )
