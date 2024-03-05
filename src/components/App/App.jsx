@@ -29,7 +29,7 @@ function App() {
   ): (
     <div>
       <Routes>
-          <Route path='/' element={<HomePage />} />
+          <Route path='/' element={<RestrictedRoute redirectTo='/contacts' component={<HomePage />}/>} />
           
           <Route path='/registration' element={<RestrictedRoute
             redirectTo='/contacts'
