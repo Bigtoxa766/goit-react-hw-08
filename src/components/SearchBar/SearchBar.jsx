@@ -14,7 +14,7 @@ export const SearchBar = () => {
       <input
         className={css.search_barInput}
       type="text"
-      value={value }
+      value={value}
       onChange={ handleFilterChange} />
     </label>
   )

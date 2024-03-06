@@ -1,11 +1,6 @@
-
-// import css from './App.module.css';
-// import { SearchBar } from '../SearchBar/SearchBar';
-// import { ContactList } from '../ContactList/ContactList';
-// import { ContactForm } from '../ContactForm/ContactForm';
+import { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-// import { fetchContacts } from '../../redux/operations';
 import { Route, Routes } from 'react-router-dom';
 import RegsterPage from '../../pages/RegsterPage';
 import HomePage from '../../pages/HomePage';
@@ -27,7 +22,8 @@ function App() {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <div>
+      <div>
+      <Toaster position="top-center"/>
       <Routes>
         <Route path='/' element={<RestrictedRoute
             redirectTo='/contacts'

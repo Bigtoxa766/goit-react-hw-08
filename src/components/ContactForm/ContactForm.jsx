@@ -1,11 +1,11 @@
 import { useId } from "react";
+import toast from 'react-hot-toast';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import * as Yup from "yup";
 import css from './ContactForm.module.css'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
 import { nanoid } from "@reduxjs/toolkit";
-
 
 const contactSchema = Yup.object().shape({
   name: Yup.string()
@@ -21,12 +21,28 @@ export const ContactForm = () => {
   const nameId = useId();
   const numberId = useId();
   const dispatch = useDispatch();
+  const { items } = useSelector(state => state.contacts);
+  const contactName = items.map(({ name }) => name);
+  const contactNumber = items.map(({ number }) => number);
   
   const handleSubmit = (values, actions) => {
+
     const newContact = {
       id: nanoid(),
       name: values.name,
       number: values.number
+    }
+
+    if (contactName.includes(values.name)) {
+      toast.error('Contact name already exist')
+      actions.resetForm();
+      return
+    }
+
+    if (contactNumber.includes(values.number)) {
+      toast.error('Contact number already exist')
+      actions.resetForm();
+      return
     }
 
     dispatch(addContact(newContact));
